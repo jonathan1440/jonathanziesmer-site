@@ -1,0 +1,95 @@
+{
+  "task_issue": {
+    "repo": "run-rhino/finish-photos-ui",
+    "number": 12,
+    "title": "Task: First-frame preview on file pick",
+    "url": "https://github.com/run-rhino/finish-photos-ui/issues/12",
+    "state": "OPEN"
+  },
+  "story_issue": {
+    "repo": "run-rhino/finish-photos",
+    "number": 20,
+    "id": "US-01",
+    "title": "US-01: First-frame video preview",
+    "url": "https://github.com/run-rhino/finish-photos/issues/20",
+    "state": "OPEN"
+  },
+  "repository": "run-rhino/finish-photos-ui",
+  "local_repo_path": "/Users/dev/Projects/finish-photos-ui",
+  "manifest_path": "docs/specs/video-preview-flip/gh-spec.manifest.json",
+  "spec_path": "docs/specs/video-preview-flip/SPEC.md",
+  "task_summary": "Extract and render the first decodable frame immediately after file selection.",
+  "scope_files": [
+    "src/lib/video-preview.ts",
+    "src/components/SubmitForm.tsx"
+  ],
+  "test_files": [
+    "src/lib/video-preview.test.ts",
+    "src/components/SubmitForm.test.tsx"
+  ],
+  "verify_cmd": "npm test -- video-preview SubmitForm",
+  "patterns": [
+    "`src/components/VideoSection.tsx`: upload progress and video mode switching"
+  ],
+  "ac_ids": ["AC-01", "AC-03", "AC-04", "AC-05"],
+  "ac_scenarios": [
+    {
+      "id": "AC-01",
+      "heading": "AC-01 — Preview on file pick",
+      "body": "When the user selects a video file in Upload new mode, show first-frame preview before upload completes."
+    }
+  ],
+  "blockers": [],
+  "blocker_gate": {
+    "passed": true,
+    "open_blockers": []
+  },
+  "task_branch": {
+    "branch": "task/US-01-first-frame-preview-on-file-pick",
+    "source": "linked",
+    "linked": ["task/US-01-first-frame-preview-on-file-pick"]
+  },
+  "parent_branch": {
+    "branch": "user-story/US-01-first-frame-video-preview",
+    "exists_on_remote": true,
+    "source": "manifest"
+  },
+  "project": {
+    "owner": "run-rhino",
+    "number": 3,
+    "title": "Roadmap",
+    "id": "PVT_abc123"
+  },
+  "work_issue_id": "US-01-TASK-01",
+  "build_hints": {
+    "task_kind": "feature",
+    "tdd_mode": "red_green_refactor",
+    "browser_verify_required": true
+  },
+  "status_update": {
+    "ok": true,
+    "status": "In-progress",
+    "project": "Roadmap"
+  },
+  "checkout": {
+    "repo_path": "/Users/dev/Projects/finish-photos-ui",
+    "branch": "task/US-01-first-frame-preview-on-file-pick",
+    "current_branch": "task/US-01-first-frame-preview-on-file-pick",
+    "created": false,
+    "source": "linked",
+    "branch_issue_link": {
+      "linked": true,
+      "action": "already_linked"
+    },
+    "story_sync": {
+      "action": "merged",
+      "detail": "merged origin/user-story/US-01-first-frame-video-preview"
+    }
+  },
+  "test_harness": {
+    "bootstrapped": false,
+    "created": [],
+    "skipped": true,
+    "reason": "tier scripts already present"
+  }
+}

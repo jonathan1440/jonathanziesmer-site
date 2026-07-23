@@ -1,0 +1,56 @@
+{
+  "project": {
+    "owner": "run-rhino",
+    "number": 3,
+    "title": "Planning"
+  },
+  "parent": {
+    "repo": "run-rhino/finish-photos",
+    "number": 90,
+    "hours": 28
+  },
+  "items": [
+    {
+      "repo": "run-rhino/finish-photos",
+      "number": 96,
+      "hours": 5,
+      "rationale": "S3 + Dropbox preview endpoints, allowlists, ffmpeg, OpenAPI"
+    },
+    {
+      "repo": "run-rhino/finish-photos",
+      "number": 97,
+      "hours": 4,
+      "rationale": "Submit contract, prep, fast-return path, UI types"
+    },
+    {
+      "repo": "run-rhino/finish-photos",
+      "number": 98,
+      "hours": 4,
+      "rationale": "ffmpeg rotation in extract_runner_frames; batched + monolithic"
+    },
+    {
+      "repo": "run-rhino/finish-photos",
+      "number": 99,
+      "hours": 3,
+      "rationale": "Client upload first-frame preview hook"
+    },
+    {
+      "repo": "run-rhino/finish-photos",
+      "number": 100,
+      "hours": 4,
+      "rationale": "S3/Dropbox server preview UI, proxies, stale-response handling"
+    },
+    {
+      "repo": "run-rhino/finish-photos",
+      "number": 101,
+      "hours": 5,
+      "rationale": "Rotation controls, confirm modal, submit wiring"
+    },
+    {
+      "repo": "run-rhino/finish-photos",
+      "number": 102,
+      "hours": 3,
+      "rationale": "Bruno, Vitest, runbook, cross-cutting tests"
+    }
+  ]
+}

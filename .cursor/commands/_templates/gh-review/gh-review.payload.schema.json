@@ -1,0 +1,143 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "gh-review.payload.schema.json",
+  "title": "gh-review sync-bugs / comment payload",
+  "type": "object",
+  "required": [
+    "review_issue",
+    "review_date",
+    "triage_path",
+    "aggregate_verdict",
+    "findings",
+    "branches",
+    "issue_type",
+    "followup_issue_type"
+  ],
+  "additionalProperties": true,
+  "properties": {
+    "review_issue": {
+      "type": "object",
+      "required": ["repo", "number"],
+      "properties": {
+        "repo": { "type": "string", "pattern": "^[^/]+/[^/]+$" },
+        "number": { "type": "integer", "minimum": 1 },
+        "url": { "type": "string" },
+        "title": { "type": "string" }
+      }
+    },
+    "story_issue": {
+      "type": ["object", "null"],
+      "properties": {
+        "repo": { "type": "string" },
+        "number": { "type": "integer" },
+        "url": { "type": "string" },
+        "title": { "type": "string" }
+      }
+    },
+    "review_date": { "type": "string", "pattern": "^\\d{4}-\\d{2}-\\d{2}$" },
+    "triage_path": { "type": "string", "minLength": 1 },
+    "aggregate_verdict": {
+      "type": "string",
+      "enum": ["FAIL", "PASS_WITH_NOTES", "PASS"]
+    },
+    "findings": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/finding" }
+    },
+    "branches": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["repo", "branch"],
+        "properties": {
+          "repo": { "type": "string" },
+          "branch": { "type": "string" },
+          "base": { "type": "string" }
+        }
+      }
+    },
+    "pr": { "type": ["object", "null"] },
+    "issue_type": { "type": "string", "const": "Bug" },
+    "followup_issue_type": { "type": "string", "const": "Task" },
+    "parent_issues": { "type": "array" },
+    "scope_hints": { "type": "object" },
+    "rr_id_registry": { "type": "object" },
+    "project": {
+      "type": "object",
+      "properties": {
+        "title": { "type": "string" }
+      }
+    },
+    "risk_class": {
+      "type": "string",
+      "enum": ["normal", "design_conversation"]
+    },
+    "contract_signoff": {
+      "type": "object",
+      "required": ["verdict", "head_sha"],
+      "properties": {
+        "verdict": {
+          "type": "string",
+          "enum": ["SIGN-OFF", "REJECT"]
+        },
+        "head_sha": {
+          "type": "string",
+          "minLength": 7,
+          "description": "PR head commit SHA at sign-off time; gate requires exact match to current head"
+        },
+        "reviewed_at": { "type": "string" },
+        "notes": { "type": "string" }
+      }
+    }
+  },
+  "$defs": {
+    "finding": {
+      "type": "object",
+      "required": ["id", "disposition", "severity", "summary", "rationale", "evidence", "recommendation"],
+      "properties": {
+        "id": { "type": "string", "pattern": "^RR-\\d+$" },
+        "disposition": {
+          "type": "string",
+          "enum": ["CONFIRM", "TRACK", "DISMISS"]
+        },
+        "severity": {
+          "type": "string",
+          "enum": ["CRITICAL", "HIGH", "MEDIUM", "LOW"]
+        },
+        "summary": { "type": "string", "minLength": 1 },
+        "repo": { "type": "string" },
+        "rationale": { "type": "string" },
+        "evidence": {
+          "type": "array",
+          "items": { "type": "string" },
+          "minItems": 1
+        },
+        "paths": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "path": { "type": "string" },
+              "role": { "type": "string" }
+            }
+          }
+        },
+        "reproduction": { "type": "string" },
+        "recommendation": { "type": "string" },
+        "owner_sa": { "type": "string" },
+        "dismiss_reason": {
+          "type": "string",
+          "enum": ["wrong-fact", "hypothetical", "intentional", "out-of-scope"]
+        },
+        "track_reason": { "type": "string" },
+        "branches": { "type": "array" }
+      },
+      "allOf": [
+        {
+          "if": { "properties": { "disposition": { "const": "DISMISS" } } },
+          "then": { "required": ["dismiss_reason"] }
+        }
+      ]
+    }
+  }
+}

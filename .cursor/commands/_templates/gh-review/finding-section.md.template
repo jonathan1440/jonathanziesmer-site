@@ -1,0 +1,13 @@
+### {{ID}} — {{TITLE}}
+
+- **Severity (review):** {{SEVERITY}}
+- **Disposition:** {{DISPOSITION}}
+- **Reason:** {{REASON}}
+- **Owner:** {{OWNER}}
+- **Repo:** {{REPO}}
+- **Finding:** {{FINDING}}
+- **Where:** {{WHERE}}
+- **Plan / spec:** {{PLAN_SPEC}}
+- **Why {{DISPOSITION}}:** {{WHY}}
+- **Mitigation already in tree:** {{MITIGATION}}
+- **Recommendation:** {{RECOMMENDATION}}

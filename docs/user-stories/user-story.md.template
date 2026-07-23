@@ -1,0 +1,21 @@
+# User Story: {{STORY_ID}} — {{STORY_TITLE}}
+
+**Spec:** [{{FEATURE_TITLE}}](../specs/{{SPEC_SLUG}}/SPEC.md)
+**Story issue:** {{STORY_ISSUE_URL}}
+**Branch:** `{{STORY_BRANCH}}`
+
+## Story
+
+{{STORY_LINE}}
+
+## Acceptance criteria
+
+{{AC_SECTION}}
+
+## Out of scope
+
+<!-- What this story deliberately does not cover -->
+
+## Dependencies
+
+<!-- Other stories or external systems this story depends on -->

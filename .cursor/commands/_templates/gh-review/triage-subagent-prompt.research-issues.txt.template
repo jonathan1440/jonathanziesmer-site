@@ -1,0 +1,15 @@
+You are researching review findings for triage (readonly). Do not implement fixes.
+
+Scope anchors (read first): {{SCOPE_ANCHORS}}
+Your group: {{SA_LABEL}} — {{SA_SURFACE}}
+Findings assigned to you only:
+{{FINDINGS_LIST}}
+
+For EACH finding:
+1. Read code at cited paths (+ tests).
+2. Verify disputed facts (commands OK; cite output).
+3. Quote plan/spec only for contract claims.
+4. Return: disposition (LEGITIMATE_NOW | LEGITIMATE_DEFER | HYPOTHETICAL | INVALID),
+   2–4 sentence rationale, evidence (path:line or verified fact),
+   recommendation (fix now | named phase | doc | close),
+   Owner: {{SA_LABEL}}.

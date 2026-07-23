@@ -1,0 +1,124 @@
+{
+  "issue_kind": "task",
+  "finding_kind": "bug",
+  "resolve_status": "open",
+  "task_issue": {
+    "repo": "run-rhino/finish-photos-ui",
+    "number": 21,
+    "title": "Task: Upload progress indicator",
+    "url": "https://github.com/run-rhino/finish-photos-ui/issues/21",
+    "state": "OPEN"
+  },
+  "story_issue": {
+    "repo": "run-rhino/finish-photos",
+    "number": 20,
+    "id": "US-01",
+    "title": "US-01: First-frame video preview",
+    "url": "https://github.com/run-rhino/finish-photos/issues/20",
+    "state": "OPEN"
+  },
+  "resolve_issue": {
+    "repo": "run-rhino/finish-photos-ui",
+    "number": 21,
+    "title": "Task: Upload progress indicator",
+    "url": "https://github.com/run-rhino/finish-photos-ui/issues/21",
+    "state": "OPEN"
+  },
+  "repository": "run-rhino/finish-photos-ui",
+  "local_repo_path": "/Users/dev/Projects/finish-photos-ui",
+  "scope_files": [
+    "src/components/UploadProgress.tsx",
+    "src/lib/upload.ts"
+  ],
+  "verify_cmd": "npm test -- UploadProgress upload",
+  "patterns": [
+    "`src/components/VideoSection.tsx`: upload progress and video mode switching"
+  ],
+  "ac_ids": ["AC-02", "AC-04"],
+  "ac_scenarios": [
+    {
+      "id": "AC-02",
+      "heading": "AC-02 — Progress during upload",
+      "body": "While uploading, show determinate progress percentage."
+    }
+  ],
+  "blocker_gate": {
+    "passed": true,
+    "open_blockers": []
+  },
+  "task_branch": {
+    "branch": "task/US-01-upload-progress-indicator",
+    "source": "linked",
+    "exists_on_remote": true
+  },
+  "linked_pr": {
+    "repo": "run-rhino/finish-photos-ui",
+    "number": 115,
+    "url": "https://github.com/run-rhino/finish-photos-ui/pull/115",
+    "state": "OPEN",
+    "head_ref": "task/US-01-upload-progress-indicator"
+  },
+  "linked_pr_override": null,
+  "linked_prs": [
+    {
+      "repo": "run-rhino/finish-photos-ui",
+      "number": 115,
+      "url": "https://github.com/run-rhino/finish-photos-ui/pull/115",
+      "state": "OPEN",
+      "head_ref": "task/US-01-upload-progress-indicator"
+    }
+  ],
+  "bugs": [
+    {
+      "finding_id": "RR-01",
+      "repo": "run-rhino/finish-photos-ui",
+      "number": 45,
+      "title": "[RR-01] Progress bar stuck at 0% during multipart upload",
+      "url": "https://github.com/run-rhino/finish-photos-ui/issues/45",
+      "state": "OPEN",
+      "summary": "Progress bar stuck at 0% during multipart upload",
+      "scope_files": ["src/lib/upload.ts"],
+      "involved_files": ["src/lib/upload.ts"],
+      "test_files": [],
+      "verify_cmd": "npm test -- upload",
+      "reproduction": "Select a file >10MB; observe progress stays at 0 until complete.",
+      "recommendation": "Wire onProgress callback from multipart uploader to state.",
+      "proposed_branch": "bug/rr-01-progress-stuck-multipart",
+      "branch": null,
+      "commit": null,
+      "status": "open"
+    },
+    {
+      "finding_id": "RR-02",
+      "repo": "run-rhino/finish-photos-ui",
+      "number": 46,
+      "title": "[RR-02] UploadProgress shows NaN when total size unknown",
+      "url": "https://github.com/run-rhino/finish-photos-ui/issues/46",
+      "state": "OPEN",
+      "summary": "UploadProgress shows NaN when total size unknown",
+      "scope_files": ["src/components/UploadProgress.tsx"],
+      "involved_files": ["src/components/UploadProgress.tsx"],
+      "test_files": ["src/components/UploadProgress.test.tsx"],
+      "verify_cmd": "npm test -- UploadProgress",
+      "reproduction": "Mock upload with Content-Length omitted; render UploadProgress.",
+      "recommendation": "Show indeterminate spinner when total is undefined.",
+      "proposed_branch": "bug/rr-02-nan-when-size-unknown",
+      "branch": "bug/rr-02-nan-when-size-unknown",
+      "commit": null,
+      "status": "open"
+    }
+  ],
+  "closed_bugs": [],
+  "hydrated_from_git": [],
+  "project": {
+    "owner": "run-rhino",
+    "number": 3,
+    "title": "Roadmap",
+    "id": "PVT_abc123"
+  },
+  "status_update": {
+    "ok": true,
+    "status": "In-progress",
+    "project": "Roadmap"
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "name": "cost_regression",
+  "description": "Cost regression check via AWS pricing MCP",
+  "marker": "auto-workflow:domain:cost_regression",
+  "prompt_class": "domain_cost_regression",
+  "mcp_required": true,
+  "instructions": "Use AWS pricing MCP to estimate CDK stack cost deltas vs main. File a Task with findings. Never merge."
+}

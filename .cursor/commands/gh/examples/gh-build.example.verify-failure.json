@@ -1,0 +1,28 @@
+{
+  "ok": false,
+  "tiers": {
+    "tier1": {
+      "command": "bash scripts/test-tier1-lint.sh",
+      "exit_code": 1,
+      "output_tail": "src/lib/video-preview.ts:42:5 - error TS2322: Type 'null' is not assignable to type 'HTMLCanvasElement'."
+    },
+    "tier2": {
+      "command": "bash scripts/test-tier2-unit.sh",
+      "exit_code": 0,
+      "output_tail": "12 passed"
+    }
+  },
+  "verify_cmd": {
+    "command": "npm test -- video-preview SubmitForm",
+    "exit_code": 0,
+    "output_tail": "Tests: 4 passed, 4 total"
+  },
+  "suite": {
+    "skipped": true,
+    "reason": "tier scripts present"
+  },
+  "build": {
+    "skipped": true,
+    "reason": "tier scripts present"
+  }
+}

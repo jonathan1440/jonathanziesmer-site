@@ -1,0 +1,61 @@
+{
+  "schema_version": "v1.1",
+  "feature_slug": "csv-fallback-staff-ui",
+  "feature_title": "CSV fallback for staff UI",
+  "repo": "run-rhino/finish-photos",
+  "spec_path": "docs/specs/csv-fallback-staff-ui/SPEC.md",
+  "spec_branch": "spec/csv-fallback-staff-ui",
+  "repos": [
+    {"repo": "run-rhino/finish-photos-ui", "role": "Staff UI"},
+    {"repo": "run-rhino/finish-photos", "role": "Pipeline API"}
+  ],
+  "project": {
+    "owner": "run-rhino",
+    "number": 3,
+    "title": "Roadmap"
+  },
+  "hierarchy": "sub_issues",
+  "status": "complete",
+  "parent_issue": {
+    "number": 412,
+    "node_id": "I_kwDOEXAMPLE",
+    "url": "https://github.com/run-rhino/finish-photos/issues/412"
+  },
+  "stories": {
+    "US-01": {
+      "number": 413,
+      "node_id": "I_kwDOEXAMPLE2",
+      "url": "https://github.com/run-rhino/finish-photos/issues/413",
+      "branch": "user-story/US-01-upload-results-csv",
+      "repos": [
+        {"repo": "run-rhino/finish-photos-ui", "role": "Staff UI"},
+        {"repo": "run-rhino/finish-photos", "role": "Pipeline API"}
+      ],
+      "ac_ids": ["AC-01", "AC-02"]
+    }
+  },
+  "work_issues": {
+    "US-01-TASK-01": {
+      "number": 414,
+      "node_id": "I_kwDOEXAMPLE3",
+      "url": "https://github.com/run-rhino/finish-photos-ui/issues/414",
+      "repo": "run-rhino/finish-photos-ui",
+      "branch": "task/US-01-upload-results-csv-ui",
+      "story_id": "US-01",
+      "story_issue": {"repo": "run-rhino/finish-photos", "number": 413},
+      "duration_estimate": "2h",
+      "files": ["src/upload/ResultsCsv.tsx"],
+      "blockers": [
+        {"repo": "run-rhino/finish-photos-ui", "number": 415, "kind": "task", "task_id": "US-01-TASK-02"}
+      ],
+      "published_at": "2026-06-10T12:00:00Z"
+    }
+  },
+  "issue_types": {
+    "parent": "Spec",
+    "story": "User Story",
+    "work": "Task"
+  },
+  "published_at": "2026-06-09T12:00:00Z",
+  "updated_at": "2026-06-09T12:00:00Z"
+}

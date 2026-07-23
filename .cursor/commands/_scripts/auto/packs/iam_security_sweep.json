@@ -1,0 +1,7 @@
+{
+  "name": "iam_security_sweep",
+  "description": "IAM policy security sweep",
+  "marker": "auto-workflow:domain:iam_security_sweep",
+  "prompt_class": "domain_iam_security_sweep",
+  "instructions": "Scan infrastructure/ for overly broad IAM. File Bugs or open a narrow fix PR with marker. Never merge parent Spec/Story/Task PRs."
+}

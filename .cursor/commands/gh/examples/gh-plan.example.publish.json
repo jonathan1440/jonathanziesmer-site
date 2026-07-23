@@ -1,0 +1,63 @@
+{
+  "story_issue": {
+    "repo": "run-rhino/finish-photos",
+    "number": 20,
+    "id": "US-01"
+  },
+  "story_notes": "First-frame preview uses a canvas extract helper in finish-photos-ui. Preview runs in parallel with multipart upload; Submit stays disabled until upload completes (see US-11 / AC-39).",
+  "spec_path": "docs/specs/video-preview-flip/SPEC.md",
+  "types": { "work": "Task" },
+  "exclude_statuses": ["shipped", "ready to ship"],
+  "tasks": [
+    {
+      "id": "US-01-TASK-01",
+      "repo": "run-rhino/finish-photos-ui",
+      "title": "First-frame preview on file pick",
+      "description": "In Upload new mode, extract and render the first decodable frame immediately after file selection, before multipart upload completes. Replacing the file updates the preview (AC-03).",
+      "acceptance": "AC-01, AC-03, AC-04, AC-05 — preview on pick; no preview for existing/Dropbox modes",
+      "duration_estimate": "3h",
+      "decisions": [
+        "Use canvas first-frame extract helper (new module) — not a third-party thumbnail library",
+        "Preview updates on file replace; existing/Dropbox modes stay without preview"
+      ],
+      "files": [
+        { "path": "src/lib/video-preview.ts", "change": "canvas first-frame extract helper (new)" },
+        { "path": "src/components/SubmitForm.tsx", "change": "wire file input to preview state" }
+      ],
+      "tests": {
+        "files": ["src/lib/video-preview.test.ts", "src/components/SubmitForm.test.tsx"],
+        "verify": "npm test -- video-preview SubmitForm"
+      },
+      "patterns": [
+        "`src/components/VideoSection.tsx`: upload progress and video mode switching"
+      ]
+    },
+    {
+      "id": "US-01-TASK-02",
+      "repo": "run-rhino/finish-photos-ui",
+      "title": "Keep preview visible during upload",
+      "description": "While multipart upload is in progress, keep preview visible and Submit disabled until upload finalizes with videoKey/videoBucket (AC-02, AC-39).",
+      "acceptance": "AC-02 — preview stays visible during upload; Submit disabled",
+      "duration_estimate": "2h",
+      "decisions": [
+        "Gate Submit on upload finalization (videoKey/videoBucket), not on preview readiness alone"
+      ],
+      "files": [
+        { "path": "src/components/SubmitForm.tsx", "change": "submit gating with preview + upload state" }
+      ],
+      "tests": {
+        "files": ["src/components/SubmitForm.test.tsx"],
+        "verify": "npm test -- SubmitForm"
+      },
+      "patterns": [
+        "`src/components/SubmitForm.tsx`: existing upload-in-progress disable logic"
+      ]
+    }
+  ],
+  "blockers": [
+    {
+      "blocked_task_id": "US-01-TASK-02",
+      "blocking": { "kind": "task", "id": "US-01-TASK-01" }
+    }
+  ]
+}

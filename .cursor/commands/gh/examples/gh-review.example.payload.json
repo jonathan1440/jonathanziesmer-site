@@ -1,0 +1,112 @@
+{
+  "review_issue": {
+    "repo": "run-rhino/finish-photos",
+    "number": 20,
+    "url": "https://github.com/run-rhino/finish-photos/issues/20",
+    "title": "US-01: Upload results CSV"
+  },
+  "story_issue": {
+    "repo": "run-rhino/finish-photos",
+    "number": 18,
+    "url": "https://github.com/run-rhino/finish-photos/issues/18",
+    "title": "US-01: Upload results CSV (story)"
+  },
+  "review_date": "2026-06-17",
+  "triage_path": "docs/paperwork/phase-2-ui/api/gh-review-20-us01.md",
+  "aggregate_verdict": "FAIL",
+  "issue_type": "Bug",
+  "followup_issue_type": "Task",
+  "pr": {
+    "repo": "run-rhino/finish-photos",
+    "number": 42,
+    "url": "https://github.com/run-rhino/finish-photos/pull/42",
+    "head_ref": "user-story/US-01-upload-results-csv",
+    "base_ref": "spec/csv-fallback-staff-ui"
+  },
+  "branches": [
+    {
+      "repo": "run-rhino/finish-photos",
+      "branch": "user-story/US-01-upload-results-csv",
+      "base": "spec/csv-fallback-staff-ui"
+    }
+  ],
+  "project": {
+    "title": "Roadmap"
+  },
+  "findings": [
+    {
+      "id": "RR-01",
+      "disposition": "CONFIRM",
+      "severity": "HIGH",
+      "summary": "Missing auth check on upload route",
+      "repo": "run-rhino/finish-photos-api",
+      "owner_sa": "SA1",
+      "rationale": "The upload handler accepts requests without validating JWT; any caller can post CSV payloads.",
+      "evidence": [
+        "`src/api/routes/upload.py:88` — no `Depends(get_current_user)`",
+        "`pytest tests/api/test_upload.py` — passes without Authorization header"
+      ],
+      "paths": [
+        {"path": "src/api/routes/upload.py", "role": "Missing auth dependency"},
+        {"path": "tests/api/test_upload.py", "role": "No negative auth test"}
+      ],
+      "reproduction": "1. Checkout `user-story/US-01-upload-results-csv` in `finish-photos-api`\n2. `curl -X POST http://localhost:8000/upload -F file=@sample.csv`\n3. **Expected:** 401 **Actual:** 200",
+      "recommendation": "Add auth dependency and regression test for missing/invalid token."
+    },
+    {
+      "id": "RR-02",
+      "disposition": "TRACK",
+      "track_reason": "spec-drift",
+      "severity": "MEDIUM",
+      "summary": "SPEC documents source update CLI but command not implemented",
+      "repo": "run-rhino/finish-photos-api",
+      "owner_sa": "SA1",
+      "rationale": "Entity CRUD block lists source update; no SourceUpdate model or repo method exists yet.",
+      "evidence": [
+        "`docs/specs/SPEC.md` — `kg source get | update | delete`",
+        "`packages/kg-cli/.../concept.py` — no source update command"
+      ],
+      "paths": [
+        {"path": "docs/specs/SPEC.md", "role": "Documents update command"},
+        {"path": "packages/kg-cli/src/kg_cli/commands/concept.py", "role": "Missing update subcommand"}
+      ],
+      "recommendation": "Add SourceUpdate stack or trim SPEC until implemented."
+    },
+    {
+      "id": "RR-03",
+      "disposition": "DISMISS",
+      "dismiss_reason": "hypothetical",
+      "severity": "MEDIUM",
+      "summary": "SSRF via webhook URL field",
+      "repo": "run-rhino/finish-photos-api",
+      "owner_sa": "SA1",
+      "rationale": "Webhook URL field is not exposed until P4 admin routes; no caller passes untrusted input today.",
+      "evidence": [
+        "`src/api/routes/admin.py` — not mounted in current router"
+      ],
+      "paths": [
+        {"path": "src/api/routes/admin.py", "role": "Deferred route"}
+      ],
+      "reproduction": "",
+      "recommendation": "Revisit when admin routes ship."
+    },
+    {
+      "id": "RR-04",
+      "disposition": "TRACK",
+      "track_reason": "test-hygiene",
+      "severity": "LOW",
+      "summary": "Upload tests omit negative auth and partial field assertions",
+      "repo": "run-rhino/finish-photos-api",
+      "owner_sa": "SA5",
+      "rationale": "Tests pass without Authorization and assert only two of four response fields; weak coverage for agents relying on error envelopes.",
+      "evidence": [
+        "`tests/api/test_upload.py:12` — no missing-token case",
+        "`tests/api/test_upload.py:44` — asserts `status` and `id` only"
+      ],
+      "paths": [
+        {"path": "tests/api/test_upload.py", "role": "Missing negative auth and incomplete assertions"}
+      ],
+      "recommendation": "Add 401 case and assert full response DTO fields."
+    }
+  ]
+}

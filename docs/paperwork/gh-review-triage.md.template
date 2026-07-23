@@ -1,0 +1,55 @@
+# gh-review — {{TITLE}}
+
+**Reviewed issue:** #{{ISSUE_NUMBER}} — {{ISSUE_TITLE}} ({{ISSUE_URL}})
+**Branch / commits:** {{BRANCH_COMMITS}}
+**Review date:** {{REVIEW_DATE}}
+**Context:** {{CONTEXT}}
+
+**Scope reminder:**
+
+{{SCOPE_REMINDER}}
+
+**Subagent ownership (fix routing):**
+
+| SA | Surface / sections reviewed | Typical fix surface |
+|----|----------------------------|---------------------|
+| SA1 | … | … |
+
+**Verification run:** {{VERIFICATION_RUN}}
+
+---
+
+## Disposition legend
+
+{{DISPOSITION_LEGEND}}
+
+## Plan anchors (what current scope promised)
+
+{{PLAN_ANCHORS}}
+
+## Summary table (all findings)
+
+| ID | Finding | Disposition | Reason | Owner | Repo |
+|----|---------|-------------|--------|-------|------|
+| | | | | | |
+
+## Suggested action order
+
+{{SUGGESTED_ACTION_ORDER}}
+
+---
+
+## Findings (full descriptions)
+
+{{FINDING_SECTIONS}}
+
+## Alignment with parent plan
+
+| Expectation | Delivery | Gap |
+|-------------|----------|-----|
+| | | |
+
+## References
+
+- Triage payload: `{{TRIAGE_PATH}}`
+- Spec: `{{SPEC_PATH}}`

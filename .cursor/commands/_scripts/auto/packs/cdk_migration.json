@@ -1,0 +1,7 @@
+{
+  "name": "cdk_migration",
+  "description": "CDK version migration sweep",
+  "marker": "auto-workflow:domain:cdk_migration",
+  "prompt_class": "domain_cdk_migration",
+  "instructions": "Propose a CDK CLI + construct library bump. Open ONE PR with marker in body. Run tiers 1-4. Never merge."
+}

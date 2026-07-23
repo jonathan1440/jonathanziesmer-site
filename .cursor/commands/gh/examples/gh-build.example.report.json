@@ -1,0 +1,45 @@
+{
+  "task": {
+    "url": "https://github.com/run-rhino/finish-photos-ui/issues/12",
+    "status_start": "In-progress",
+    "status_end": "Review / QA"
+  },
+  "story": {
+    "url": "https://github.com/run-rhino/finish-photos/issues/20",
+    "ac_ids": ["AC-01", "AC-03", "AC-04", "AC-05"]
+  },
+  "branch": {
+    "name": "task/US-01-first-frame-preview-on-file-pick",
+    "linked": true
+  },
+  "commit": {
+    "sha": "a1b2c3d4e5f6789012345678901234567890abcd",
+    "message": "feat(video-preview): First-frame preview on file pick (US-01, AC-01, AC-03, run-rhino/finish-photos-ui#12)"
+  },
+  "pr": {
+    "url": "https://github.com/run-rhino/finish-photos-ui/pull/45",
+    "task_linked": true,
+    "skipped": false,
+    "reason": null
+  },
+  "verify": {
+    "ok": true,
+    "tier1_ok": true,
+    "tier2_ok": true,
+    "verify_cmd_ok": true
+  },
+  "gates": {
+    "ok": true
+  },
+  "build_hints": {
+    "task_kind": "feature",
+    "tdd_mode": "red_green_refactor",
+    "browser_verify_required": true
+  },
+  "tdd": {
+    "agent_attested": null
+  },
+  "simplify": {
+    "agent_attested": null
+  }
+}

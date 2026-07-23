@@ -1,0 +1,36 @@
+{
+  "feature_slug": "csv-fallback-staff-ui",
+  "feature_title": "CSV fallback for staff UI",
+  "repo": "run-rhino/finish-photos",
+  "spec_path": "docs/specs/csv-fallback-staff-ui/SPEC.md",
+  "branch": "spec/csv-fallback-staff-ui",
+  "repos": [
+    {"repo": "run-rhino/finish-photos-ui", "role": "Staff UI"},
+    {"repo": "run-rhino/finish-photos", "role": "Pipeline API"}
+  ],
+  "project": {"title": "Roadmap"},
+  "types": {"parent": "Spec", "story": "User Story"},
+  "parent": {
+    "objective_summary": "One paragraph from SPEC objective section."
+  },
+  "stories": [
+    {
+      "id": "US-01",
+      "title": "Upload results CSV",
+      "story_line": "As a staff user, I want to upload a results CSV, so that I can review data without the live API.",
+      "repos": [
+        {"repo": "run-rhino/finish-photos-ui", "role": "Staff UI"},
+        {"repo": "run-rhino/finish-photos", "role": "Pipeline API"}
+      ],
+      "acceptance_scenarios": [
+        {
+          "id": "AC-01",
+          "name": "Happy path",
+          "given": "a valid CSV file",
+          "when": "the user uploads it",
+          "then": "parsed rows appear in the review table"
+        }
+      ]
+    }
+  ]
+}

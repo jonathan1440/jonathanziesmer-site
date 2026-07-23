@@ -1,0 +1,7 @@
+{
+  "name": "feedback_remediation",
+  "description": "Remediate open review findings via resolve",
+  "marker": "auto-workflow:domain:feedback_remediation",
+  "prompt_class": "domain_feedback_remediation",
+  "instructions": "Find open Bug/Task findings from /gh-review. Run /gh-resolve-issues with per-finding PRs. Agent may merge finding PRs only."
+}
