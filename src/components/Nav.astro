@@ -1,0 +1,60 @@
+---
+import Menu from '@lucide/astro/icons/menu';
+import { nav, site } from '../data/site';
+
+const pathname = Astro.url.pathname.replace(/\/$/, '') || '/';
+
+function isCurrent(href: string) {
+  return pathname === href;
+}
+---
+
+<header class="relative border-b border-line">
+  <div class="mx-auto max-w-content px-5">
+    <div class="flex items-center justify-between gap-4 py-4">
+      <a href="/" class="text-sm font-medium text-ink">{site.name}</a>
+      <nav class="hidden items-center gap-6 md:flex" aria-label="Primary">
+        {
+          nav.map((item) => (
+            <a
+              href={item.href}
+              class:list={['text-sm', isCurrent(item.href) ? 'text-accent' : 'text-ink']}
+              aria-current={isCurrent(item.href) ? 'page' : undefined}
+            >
+              {item.label}
+            </a>
+          ))
+        }
+        <a
+          href={site.resumePath}
+          class="rounded-[2px] border border-ink px-3 py-1.5 text-sm text-ink hover:border-accent hover:text-accent"
+        >
+          Resume
+        </a>
+      </nav>
+    </div>
+
+    <details class="md:hidden">
+      <summary class="absolute right-5 top-4 cursor-pointer text-ink">
+        <span class="sr-only">Open menu</span>
+        <Menu size={20} aria-hidden="true" />
+      </summary>
+      <nav class="flex flex-col gap-3 border-t border-line py-4" aria-label="Primary">
+        {
+          nav.map((item) => (
+            <a
+              href={item.href}
+              class:list={['text-sm', isCurrent(item.href) ? 'text-accent' : 'text-ink']}
+              aria-current={isCurrent(item.href) ? 'page' : undefined}
+            >
+              {item.label}
+            </a>
+          ))
+        }
+        <a href={site.resumePath} class="text-sm text-ink">
+          Resume
+        </a>
+      </nav>
+    </details>
+  </div>
+</header>

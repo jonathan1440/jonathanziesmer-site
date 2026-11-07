@@ -22,7 +22,7 @@ Content inventory: `docs/content-sources.md`.
 
 ## Where things live
 
-Run `tree -L 2 .` for current layout. After Astro scaffold (not done yet):
+Run `tree -L 2 .` for current layout. App layout:
 
 - `src/content/projects/` — one Markdown file per project card
 - `src/content/experience/` — one Markdown file per role
@@ -64,10 +64,8 @@ Run `tree -L 2 .` for current layout. After Astro scaffold (not done yet):
 
 ## Validation
 
-Until the app is scaffolded: no package scripts yet. After scaffold, expect:
-
-- `npm run build` — must succeed before claiming done
-- `npm run check` / typecheck if configured
+- `npm run build` — must succeed before claiming done (`astro check` and `astro build`)
+- `npm run check` — typecheck
 - Visual pass against SPEC palette/type/layout on home + one content page
 
 Cannot validate yet: Resend delivery, Cloudflare deploy, production DNS.

@@ -1,0 +1,31 @@
+---
+import Mail from '@lucide/astro/icons/mail';
+import Github from './icons/Github.astro';
+import Linkedin from './icons/Linkedin.astro';
+import { site } from '../data/site';
+
+const year = new Date().getFullYear();
+---
+
+<footer class="border-t border-line">
+  <div class="mx-auto flex max-w-content flex-wrap items-center justify-between gap-4 px-5 py-8">
+    <p class="font-mono text-xs text-muted">© {year} {site.name}</p>
+    <ul class="flex items-center gap-4">
+      <li>
+        <a href={site.linkedin} class="text-muted hover:text-accent" aria-label="LinkedIn">
+          <Linkedin size={16} aria-hidden="true" />
+        </a>
+      </li>
+      <li>
+        <a href={site.github} class="text-muted hover:text-accent" aria-label="GitHub">
+          <Github size={16} aria-hidden="true" />
+        </a>
+      </li>
+      <li>
+        <a href={`mailto:${site.email}`} class="text-muted hover:text-accent" aria-label="Email">
+          <Mail size={16} aria-hidden="true" />
+        </a>
+      </li>
+    </ul>
+  </div>
+</footer>

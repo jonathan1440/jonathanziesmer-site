@@ -1,0 +1,50 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { site } from '../data/site';
+
+const description =
+  'Engineering background, how Jonathan Ziesmer works, and links to the resume and LinkedIn.';
+---
+
+<BaseLayout title="About" description={description}>
+  <h1 class="text-4xl text-ink">About</h1>
+  <div class="mt-8 max-w-[65ch] space-y-4">
+    <p>
+      I build production systems in Python, TypeScript, and AWS, and I stay with them through
+      design, implementation, and operations. At Point Loma Nazarene University I own enterprise
+      integrations and the CI/CD standards around them.
+    </p>
+    <p>
+      Before that, at CampLife, I built the ETL pipeline that became the standard onboarding path
+      for a multi-tenant SaaS platform serving 600+ campground clients. The interesting part of
+      that work was the messy middle: schema detection, validation, and deduplication across
+      exports that did not agree with each other.
+    </p>
+  </div>
+
+  <section class="mt-16 border-t border-line pt-12">
+    <h2 class="text-2xl text-ink">How I work</h2>
+    <ul class="mt-6 max-w-[65ch] list-disc space-y-3 pl-5">
+      <li>Design it, ship it, and own what happens in production.</li>
+      <li>Verify the behavior of the core path. A coverage number is not the point.</li>
+    </ul>
+  </section>
+
+  <section class="mt-16 border-t border-line pt-12">
+    <h2 class="text-2xl text-ink">Resume</h2>
+    <div class="mt-6 flex flex-wrap items-center gap-x-6 gap-y-4">
+      <a
+        href={site.resumePath}
+        class="rounded-[2px] bg-accent px-4 py-2 text-sm text-white hover:bg-accent-dark"
+      >
+        Download resume
+      </a>
+      <a
+        href={site.linkedin}
+        class="text-sm text-ink underline-offset-4 hover:text-accent hover:underline"
+      >
+        LinkedIn
+      </a>
+    </div>
+  </section>
+</BaseLayout>

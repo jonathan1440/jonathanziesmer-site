@@ -3,5 +3,9 @@ node_modules/
 dist/
 .env
 .env.*
+!.env.example
 .astro/
+.dev.vars
+.wrangler/
+.playwright-mcp/
 .cursor/handoffs/

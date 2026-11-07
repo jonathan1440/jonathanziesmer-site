@@ -1,0 +1,21 @@
+---
+import { getCollection } from 'astro:content';
+import ProjectCard from '../components/ProjectCard.astro';
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const projects = (await getCollection('projects')).sort((a, b) => a.data.order - b.data.order);
+
+const description =
+  'Seven projects from the resume: integrations, platform standards, test suites, onboarding ETL, and a finish-line photo pipeline.';
+---
+
+<BaseLayout title="Projects" description={description}>
+  <h1 class="text-4xl text-ink">Projects</h1>
+  <p class="mt-6 max-w-[65ch]">
+    Seven pieces of shipped work from the resume. The same stories, with the problem next to the
+    stack.
+  </p>
+  <div class="mt-8 divide-y divide-line border-t border-line">
+    {projects.map((project) => <ProjectCard project={project} />)}
+  </div>
+</BaseLayout>
