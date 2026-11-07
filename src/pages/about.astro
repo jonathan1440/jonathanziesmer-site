@@ -3,30 +3,55 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import { site } from '../data/site';
 
 const description =
-  'Engineering background, how Jonathan Ziesmer works, and links to the resume and LinkedIn.';
+  'Engineering background, running and race directing outside of work, and links to the resume and LinkedIn.';
 ---
 
 <BaseLayout title="About" description={description}>
   <h1 class="text-4xl text-ink">About</h1>
   <div class="mt-8 max-w-[65ch] space-y-4">
     <p>
-      I build production systems in Python, TypeScript, and AWS, and I stay with them through
-      design, implementation, and operations. At Point Loma Nazarene University I own enterprise
-      integrations and the CI/CD standards around them.
+      Software engineer with five years in production, in Python, TypeScript, and AWS. At Point
+      Loma Nazarene University I own enterprise integrations and the CI/CD standards around them:
+      daily Workday feeds, the GitHub migration, and test gates on services that used to deploy
+      without them.
     </p>
     <p>
-      Before that, at CampLife, I built the ETL pipeline that became the standard onboarding path
-      for a multi-tenant SaaS platform serving 600+ campground clients. The interesting part of
-      that work was the messy middle: schema detection, validation, and deduplication across
-      exports that did not agree with each other.
+      At CampLife I built the ETL pipeline that became the standard onboarding path for a
+      multi-tenant platform serving 600+ campground clients. Parks arrived with exports from
+      Newbook, RMS, paper ledgers, and spreadsheets. The work was schema detection, validation,
+      and deduplication, then staying with the system when a million-row file broke the first
+      design. I also worked with the CEO and COO on occupancy analysis presented at the 2024
+      CampEx conference.
+    </p>
+    <p>
+      I started writing Python at 12. The work since then runs from personal scripts to systems
+      other people run in production.
     </p>
   </div>
 
   <section class="mt-16 border-t border-line pt-12">
+    <h2 class="text-2xl text-ink">Outside of work</h2>
+    <div class="mt-6 max-w-[65ch] space-y-4">
+      <p>
+        I spend a lot of free time training for road and trail races, mostly in Chattanooga and
+        also elsewhere in the country. I coach runners as a hobby. I earned a UESCA running
+        coaching certification in April 2025.
+      </p>
+      <p>
+        From August 2021 to September 2025 I was part-time Director of White Oak Mountain Racing
+        at Southern Adventist University in Collegedale. I directed over 10 races for the
+        university and community clients. Some events had 500+ participants. One race raised over
+        $7k for outdoor education for local inner city school children.
+      </p>
+    </div>
+  </section>
+
+  <section class="mt-16 border-t border-line pt-12">
     <h2 class="text-2xl text-ink">How I work</h2>
     <ul class="mt-6 max-w-[65ch] list-disc space-y-3 pl-5">
-      <li>Design it, ship it, and own what happens in production.</li>
+      <li>Own the system from design through production, including the logs, reports, and deploy gates.</li>
       <li>Verify the behavior of the core path. A coverage number is not the point.</li>
+      <li>Work directly with the people who use the system, including onboarding leads and executives.</li>
     </ul>
   </section>
 

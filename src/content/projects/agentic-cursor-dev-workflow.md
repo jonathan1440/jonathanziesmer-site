@@ -1,9 +1,10 @@
 ---
 title: Agentic Cursor Dev Workflow
-summary: The team's agentic development workflow, designed and taught in Cursor.
-problem: Spec, plan, build, review, and fix, structured so it can later run from GitHub. The point is a shared engineering process.
+summary: The engineering team's Cursor workflow, designed for a small AI budget.
+problem: The cycle is spec, plan, build, review, fix — manual commands now, structured so the same steps can later run from GitHub pull requests and issues. I taught it to the team; about 3 of 10 licensed engineers use Cursor day to day.
 stack:
   - Cursor
+  - GitHub
 featured: false
 order: 5
 ---
