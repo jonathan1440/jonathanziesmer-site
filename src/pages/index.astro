@@ -1,0 +1,36 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { site } from '../data/site';
+
+const description =
+  'Software engineer working in Python, TypeScript, and AWS. Currently at Point Loma Nazarene University.';
+---
+
+<BaseLayout title={site.name} description={description}>
+  <h1 class="home-title text-4xl text-ink">{site.name}</h1>
+  <p class="mt-4 font-mono text-xs tracking-wide text-muted">{site.role}</p>
+  <div class="mt-8 max-w-[65ch] space-y-4">
+    <p>
+      Software engineer working in Python, TypeScript, and AWS. I currently own enterprise
+      integrations and CI/CD standards at Point Loma Nazarene University.
+    </p>
+    <p>
+      Before that I built the automated onboarding pipeline for a multi-tenant platform serving
+      600+ clients, and I still own systems from design through production.
+    </p>
+  </div>
+  <div class="mt-10 flex flex-wrap items-center gap-x-6 gap-y-4">
+    <a
+      href="/projects"
+      class="rounded-[2px] bg-accent px-4 py-2 text-sm text-white hover:bg-accent-dark"
+    >
+      View my work
+    </a>
+    <a href="/contact" class="text-sm text-ink underline-offset-4 hover:text-accent hover:underline">
+      Get in touch
+    </a>
+  </div>
+  <p class="mt-16 border-t border-line pt-6 font-mono text-xs text-muted">
+    5 years in production · Python, TypeScript, AWS
+  </p>
+</BaseLayout>

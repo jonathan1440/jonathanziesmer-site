@@ -1,0 +1,66 @@
+@import "tailwindcss";
+@config "../../tailwind.config.mjs";
+
+@import "@fontsource-variable/fraunces/standard.css";
+@import "@fontsource-variable/dm-sans";
+@import "@fontsource-variable/jetbrains-mono";
+
+@layer base {
+  html {
+    background-color: #ffffff;
+    color: #0f1117;
+  }
+
+  body {
+    font-family: "DM Sans Variable", ui-sans-serif, system-ui, sans-serif;
+    text-rendering: optimizeLegibility;
+  }
+
+  h1 {
+    font-family: "Fraunces Variable", ui-serif, Georgia, serif;
+    font-weight: 400;
+    font-variation-settings: "opsz" 144, "wght" 400;
+  }
+
+  h2,
+  h3,
+  h4 {
+    font-family: "DM Sans Variable", ui-sans-serif, system-ui, sans-serif;
+    font-weight: 600;
+  }
+
+  :focus-visible {
+    outline: 2px solid #0057ff;
+    outline-offset: 2px;
+  }
+}
+
+@keyframes home-rise {
+  from {
+    opacity: 0;
+    transform: translateY(0.4rem);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.home-title {
+  animation: home-rise 200ms ease-out both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .home-title {
+    animation: none;
+  }
+}
+
+summary::-webkit-details-marker {
+  display: none;
+}
+
+summary {
+  list-style: none;
+}

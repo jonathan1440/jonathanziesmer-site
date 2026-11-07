@@ -1,0 +1,36 @@
+---
+import '../styles/global.css';
+import Footer from '../components/Footer.astro';
+import Nav from '../components/Nav.astro';
+import SEO from '../components/SEO.astro';
+
+interface Props {
+  title: string;
+  description: string;
+}
+
+const { title, description } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <SEO title={title} description={description} />
+  </head>
+  <body class="flex min-h-screen flex-col bg-background font-sans text-base text-ink antialiased">
+    <a
+      href="#content"
+      class="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-20 focus:bg-background focus:px-3 focus:py-2"
+    >
+      Skip to content
+    </a>
+    <Nav />
+    <main id="content" class="mx-auto w-full max-w-content flex-1 px-5 pb-16 pt-14">
+      <slot />
+    </main>
+    <Footer />
+  </body>
+</html>

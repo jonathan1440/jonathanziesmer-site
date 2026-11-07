@@ -1,0 +1,30 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import StackTags from './StackTags.astro';
+
+interface Props {
+  entry: CollectionEntry<'experience'>;
+  level?: 2 | 3;
+}
+
+const { entry, level = 2 } = Astro.props;
+const { title, company, dates, location, stack, bullets, featured } = entry.data;
+const meta = location ? `${dates} · ${location}` : dates;
+const Heading = level === 3 ? 'h3' : 'h2';
+---
+
+<article class:list={['py-10', featured && 'border-l-[3px] border-accent pl-5']}>
+  <Heading class="text-xl text-ink">{title}</Heading>
+  <p class="mt-1 text-base text-ink">{company}</p>
+  <p class="mt-2 font-mono text-xs text-muted">{meta}</p>
+  <StackTags items={stack} />
+  {
+    bullets.length > 0 && (
+      <ul class="mt-4 list-disc space-y-2 pl-5 text-base text-ink">
+        {bullets.map((bullet) => (
+          <li>{bullet}</li>
+        ))}
+      </ul>
+    )
+  }
+</article>

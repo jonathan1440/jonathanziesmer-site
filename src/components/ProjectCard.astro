@@ -1,0 +1,35 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import StackTags from './StackTags.astro';
+
+interface Props {
+  project: CollectionEntry<'projects'>;
+}
+
+const { project } = Astro.props;
+const { title, summary, problem, stack, links, featured } = project.data;
+---
+
+<article class:list={['py-10', featured && 'border-l-[3px] border-accent pl-5']}>
+  <h2 class="text-xl text-ink">{title}</h2>
+  <p class="mt-2 text-base text-ink">{summary}</p>
+  <StackTags items={stack} />
+  <p class="mt-4 text-base text-ink">{problem}</p>
+  {
+    links.length > 0 && (
+      <ul class="mt-4 flex flex-wrap gap-x-5 gap-y-2">
+        {links.map((link) => (
+          <li>
+            <a
+              href={link.href}
+              class="text-sm text-accent underline-offset-4 hover:underline"
+              rel="noreferrer noopener"
+            >
+              {link.label}
+            </a>
+          </li>
+        ))}
+      </ul>
+    )
+  }
+</article>

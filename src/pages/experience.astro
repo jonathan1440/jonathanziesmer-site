@@ -1,0 +1,63 @@
+---
+import { getCollection } from 'astro:content';
+import ExperienceItem from '../components/ExperienceItem.astro';
+import StackTags from '../components/StackTags.astro';
+import { site } from '../data/site';
+import { skillGroups } from '../data/skills';
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const entries = (await getCollection('experience')).sort((a, b) => a.data.order - b.data.order);
+const roles = entries.filter((entry) => entry.data.kind === 'role');
+const education = entries.filter((entry) => entry.data.kind === 'education');
+
+const description =
+  'Work history at Point Loma Nazarene University and CampLife, education, and skills from the resume.';
+---
+
+<BaseLayout title="Experience" description={description}>
+  <h1 class="text-4xl text-ink">Experience</h1>
+  <p class="mt-6 max-w-[65ch]">
+    Roles and education from the resume. Impact first, then the tools that were actually in the
+    work.
+  </p>
+  <a
+    href={site.resumePath}
+    class="mt-8 inline-block rounded-[2px] bg-accent px-4 py-2 text-sm text-white hover:bg-accent-dark"
+  >
+    Download resume
+  </a>
+
+  <div class="mt-8 divide-y divide-line border-t border-line">
+    {roles.map((entry) => <ExperienceItem entry={entry} />)}
+  </div>
+
+  <section class="mt-16 border-t border-line pt-12">
+    <h2 class="text-2xl text-ink">Education</h2>
+    <div class="divide-y divide-line">
+      {education.map((entry) => <ExperienceItem entry={entry} level={3} />)}
+    </div>
+  </section>
+
+  <section class="mt-16 border-t border-line pt-12">
+    <h2 class="text-2xl text-ink">Skills</h2>
+    <div class="mt-8 space-y-8">
+      {
+        skillGroups.map((group) => (
+          <div>
+            <h3 class="font-mono text-xs text-muted">{group.label}</h3>
+            <StackTags items={group.items} />
+          </div>
+        ))
+      }
+    </div>
+  </section>
+
+  <p class="mt-16 border-t border-line pt-8">
+    <a
+      href={site.linkedin}
+      class="text-sm text-ink underline-offset-4 hover:text-accent hover:underline"
+    >
+      LinkedIn
+    </a>
+  </p>
+</BaseLayout>
